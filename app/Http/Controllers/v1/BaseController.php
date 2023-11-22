@@ -21,8 +21,7 @@ class BaseController extends Controller
 
             'success' => [
                 'token' => $result['token'],
-                'message' => $message,git config --global user.name "Océane GUIOCHET"
-git config --global user.email "guioch06oc@lycee-ndduroc.com"
+                'message' => $message,
             ],
 
         ];
