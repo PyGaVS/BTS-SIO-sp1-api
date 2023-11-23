@@ -53,10 +53,16 @@ class UserSeeder extends Seeder
         }
 
         //DRIVERS
-        foreach(range(1, 20) as $i){
+        /*
+        foreach(range(1, 15) as $i){
             $driver = User::factory()
                 ->create(['user_type_id' => 2]);
 
         }
+        */
+        User::factory()->count(15)
+            ->create([
+                'user_type_id' => 2
+            ]);
     }
 }
