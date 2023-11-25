@@ -20,12 +20,14 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $password = Hash::make('12345678');
+
         return [
             'firstname' => fake()->firstName(),
             'lastname' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => Hash::make('12345678'),
+            'password' => $password,
             'remember_token' => Str::random(10),
             'street' => fake()->streetName(),
             'postalCode' => fake()->postcode(),
