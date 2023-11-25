@@ -16,8 +16,13 @@ class Car extends Model
         return $this->belongsTo(Report::class);
     }
 
-    public function models(): HasMany
+    public function maintenances(): BelongsTo
     {
-        return $this->hasMany(Model::class);
+        return $this->belongsTo(Maintenance::class);
+    }
+
+    public function carModels(): HasMany
+    {
+        return $this->hasMany(CarModel::class);
     }
 }

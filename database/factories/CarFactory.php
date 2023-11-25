@@ -14,10 +14,11 @@ class CarFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function licensePlateMaker() : string
     {
+        // Function that generates a license plate in French format
         $letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        // Generate license plate
+
         $licensePlate = $letters[rand(0, strlen($letters))-1]
             .$letters[rand(0, strlen($letters))-1]
             .'-'
@@ -25,6 +26,13 @@ class CarFactory extends Factory
             .'-'
             .$letters[rand(0, strlen($letters))-1]
             .$letters[rand(0, strlen($letters))-1];
+
+        return $licensePlate;
+    }
+
+    private function statusPicker() : string
+    {
+        // Function that picks a random status in a list
         $status = array(
             'Réparation',
             'Opérationnelle',
@@ -32,12 +40,16 @@ class CarFactory extends Factory
             'Controle technique',
             'Autre exemple'
         );
-
+        return $status[rand(0, count($status) -1)];
+    }
+    public function definition(): array
+    {
         return [
-            'licensePlate' => $licensePlate,
-            'status' => $status[rand(0, 4)],
+            'licensePlate' => $this->licensePlateMaker(),
+            'status' => $this->statusPicker(),
             'isClean' => rand(0, 1),
-            'mileage' => rand(0, 500000)
+            'mileage' => rand(0, 500000),
+            'car_model_id' => rand(1, 25)
         ];
     }
 }
