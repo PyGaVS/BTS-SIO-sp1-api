@@ -28,5 +28,6 @@ return new class extends Migration
         Schema::dropIfExists('reports');
         Schema::dropIfExists('cars');
         Schema::dropIfExists('car_models');
+        //test
     }
 };
