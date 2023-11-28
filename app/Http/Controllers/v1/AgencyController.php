@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAgencyRequest;
 use App\Http\Requests\UpdateAgencyRequest;
 use App\Models\Agency;
+use Illuminate\Support\Facades\Log;
 
 class AgencyController extends Controller
 {
@@ -13,7 +15,8 @@ class AgencyController extends Controller
      */
     public function index()
     {
-        //
+        Log::debug('/agency AgencyController@index()');
+        return response()->json(Agency::all());
     }
 
     /**
