@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        $password = Hash::make('12345678');
         $userTypes = [
             1 => 'agent',
             2 => 'driver'
@@ -28,13 +29,14 @@ class UserSeeder extends Seeder
                 ]);
         }
         //AGENTS
-        foreach(range(1, 6) as $i){
+//        foreach(range(1, 9) as $i){
+        for($i = 1; $i < 9; $i++) {
             $agent = User::factory()
                 ->create([
                     'firstname' => 'client',
                     'lastname' => '0'.$i,
                     'email' => 'client0'.$i.'@seven.fr',
-                    'password' => Hash::make('12345678'),
+                    'password' => $password,
                     'street' => null,
                     'postalCode' => null,
                     'city' => null,
@@ -43,9 +45,23 @@ class UserSeeder extends Seeder
                     'user_type_id' => 1,
                     'agency_id' => rand(1, 3)
                 ]);
+
+            /*
+            $agent->UserType()->create([
+                'label' => 'agent',
+                'user_id' => $agent['id'],
+            ]);
+            */
         }
 
         //DRIVERS
+        /*
+        foreach(range(1, 15) as $i){
+            $driver = User::factory()
+                ->create(['user_type_id' => 2]);
+
+        }
+        */
         User::factory()->count(15)
             ->create([
                 'user_type_id' => 2

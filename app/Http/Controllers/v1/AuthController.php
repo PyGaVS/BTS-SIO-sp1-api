@@ -12,6 +12,7 @@ use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Log;
 use Validator;
 
 
@@ -27,12 +28,16 @@ class AuthController extends BaseController
 
         $validator = Validator::make($request->all(), [
 
-            'name' => 'required',
-
+            'firstname' => 'required',
+            'lastname' => 'required',
             'email' => 'required|email',
+            'password' => 'required',
 
-            'password' => 'required'
-
+            'street' => 'required',
+            'postalCode' => 'required',
+            'city' => 'required',
+            'phone' => 'required',
+            'licenseNumber' => 'required'
         ]);
 
 
@@ -48,8 +53,11 @@ class AuthController extends BaseController
         $input = $request->all();
 
         $input['password'] = bcrypt($input['password']);
+        $input['user_type_id'] = 2;
 
-        $user = User::create($input);
+        Log::debug('inputs :', $input);
+
+        $user = User::factory()->create($input);
 
         $success['token'] =  $user->createToken('MyApp')->plainTextToken;
 

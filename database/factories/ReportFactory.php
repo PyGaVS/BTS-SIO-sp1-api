@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Agency>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Report>
  */
-class AgencyFactory extends Factory
+class ReportFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,8 @@ class AgencyFactory extends Factory
     public function definition(): array
     {
         return [
-            'city' => fake()->city()
+            'date' => fake()->dateTime,
+            'car_id' => rand(1,3)
         ];
     }
 }
