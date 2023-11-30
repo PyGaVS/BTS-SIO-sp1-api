@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\CarModel;
+use App\Models\Journey;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
             BookingSeeder::class,
             CarModelSeeder::class,
             CarSeeder::class,
+            JourneySeeder::class,
             MaintenanceSeeder::class,
             ReportSeeder::class,
             DamageSeeder::class,

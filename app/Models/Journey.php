@@ -7,15 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Agency extends Model
+class Journey extends Model
 {
     use HasFactory;
 
-    public function users(): BelongsTo {
-        return $this->belongsTo(User::class);
+    public function agencies(): HasMany
+    {
+        return $this->hasMany(Agency::class);
     }
-
-    public function journeys(): BelongsTo {
-        return $this->belongsTo(Journey::class);
+    public function bookings(): BelongsTo
+    {
+        return $this->belongsTo(Booking::class);
     }
 }

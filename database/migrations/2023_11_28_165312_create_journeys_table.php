@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('journeys', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('startAgency')->nullable()->constrained('agencies');
+            $table->foreignId('endAgency')->nullable()->constrained('agencies');
             $table->timestamps();
         });
     }
@@ -22,6 +24,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('users');
+        Schema::dropIfExists('booking_users');
+        Schema::dropIfExists('bookings');
         Schema::dropIfExists('journeys');
     }
 };

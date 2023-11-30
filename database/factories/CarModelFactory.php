@@ -22,6 +22,7 @@ class CarModelFactory extends Factory
 
         $carNames = array(
             'Renault',
+            'Mazda',
             'Citroën',
             'Peugeot',
             'BMW',
@@ -36,7 +37,11 @@ class CarModelFactory extends Factory
 
         switch($car) {
             case 'Renault':
-                $models = array('Clio','Mégane','Traffic');
+                $models = array('Clio','Mégane','Traffic','R12');
+                $model = $models[rand(0, count($models) -1)];
+                break;
+            case 'Mazda':
+                $models = array('Miata');
                 $model = $models[rand(0, count($models) -1)];
                 break;
             case 'Citroën':
@@ -60,7 +65,7 @@ class CarModelFactory extends Factory
                 $model = $models[rand(0, count($models) -1)];
                 break;
             case 'Ferrari':
-                $models = array('F40','La Farrari','488 Italia');
+                $models = array('F40','LaFerrari','488 Italia');
                 $model = $models[rand(0, count($models) -1)];
                 break;
             case 'Lamborghini':

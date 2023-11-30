@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreJourneysRequest;
-use App\Http\Requests\UpdateJourneysRequest;
-use App\Models\Journeys;
+use App\Http\Requests\StoreJourneyRequest;
+use App\Http\Requests\UpdateJourneyRequest;
+use App\Models\Journey;
 
-class JourneysController extends Controller
+class JourneyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class JourneysController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreJourneysRequest $request)
+    public function store(StoreJourneyRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class JourneysController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Journeys $journeys)
+    public function show(Journey $journey)
     {
         //
     }
@@ -43,7 +43,7 @@ class JourneysController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Journeys $journeys)
+    public function edit(Journey $journey)
     {
         //
     }
@@ -51,7 +51,7 @@ class JourneysController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateJourneysRequest $request, Journeys $journeys)
+    public function update(UpdateJourneyRequest $request, Journey $journey)
     {
         //
     }
@@ -59,7 +59,7 @@ class JourneysController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Journeys $journeys)
+    public function destroy(Journey $journey)
     {
         //
     }
