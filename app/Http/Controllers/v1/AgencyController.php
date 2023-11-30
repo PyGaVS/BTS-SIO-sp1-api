@@ -40,7 +40,9 @@ class AgencyController extends Controller
      */
     public function show(Agency $agency)
     {
-        //
+        $agency = Agency::find($agency->id);
+        return response()->json($agency);
+
     }
 
     /**
