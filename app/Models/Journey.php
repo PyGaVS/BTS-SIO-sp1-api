@@ -15,7 +15,7 @@ class Journey extends Model
     {
         return $this->hasMany(Agency::class);
     }
-    public function bookings(): BelongsTo
+    public function booking(): BelongsTo
     {
         return $this->belongsTo(Booking::class);
     }

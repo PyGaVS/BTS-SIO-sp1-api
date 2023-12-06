@@ -26,6 +26,8 @@ return new class extends Migration
     {
         Schema::dropIfExists('damages');
         Schema::dropIfExists('reports');
+        Schema::dropIfExists('booking_users');
+        Schema::dropIfExists('bookings');
         Schema::dropIfExists('cars');
         Schema::dropIfExists('car_models');
         //test

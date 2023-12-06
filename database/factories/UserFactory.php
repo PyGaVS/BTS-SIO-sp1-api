@@ -20,12 +20,14 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $firstname = fake()->firstname();
+        $lastname = fake()->lastname();
         $password = Hash::make('12345678');
 
         return [
-            'firstname' => fake()->firstName(),
-            'lastname' => fake()->lastName(),
-            'email' => fake()->unique()->safeEmail(),
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'email' => strtolower($firstname.'.'.$lastname.'@gmail.com'),
             'email_verified_at' => now(),
             'password' => $password,
             'remember_token' => Str::random(10),

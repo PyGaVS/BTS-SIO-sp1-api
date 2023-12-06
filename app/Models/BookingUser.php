@@ -10,6 +10,10 @@ class BookingUser extends Model
 {
     use HasFactory;
 
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
     public function User(): BelongsTo
     {
         return $this->belongsTo(User::class);

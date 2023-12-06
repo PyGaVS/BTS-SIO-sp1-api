@@ -34,6 +34,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at',
+        'updated_at',
+        'email_verified_at',
+        'agency_id',
     ];
 
     /**
@@ -53,5 +57,9 @@ class User extends Authenticatable
 
     public function bookingUser(): HasMany {
         return $this->hasMany(BookingUser::class);
+    }
+
+    public function booking(): BelongsTo {
+        return $this->belongsTo(Booking::class);
     }
 }

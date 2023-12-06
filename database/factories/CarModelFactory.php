@@ -31,13 +31,14 @@ class CarModelFactory extends Factory
             'Ferrari',
             'Lamborghini',
             'Aston Martin',
+            'Subaru',
         );
 
         $car = $carNames[rand(0, count($carNames) -1)];
 
         switch($car) {
             case 'Renault':
-                $models = array('Clio','Mégane','Traffic','R12');
+                $models = array('Clio','Mégane','Traffic','R12','Modus');
                 $model = $models[rand(0, count($models) -1)];
                 break;
             case 'Mazda':
@@ -74,6 +75,10 @@ class CarModelFactory extends Factory
                 break;
             case 'Aston Martin':
                 $models = array('Vulcan','DB7','Vanquish');
+                $model = $models[rand(0, count($models) -1)];
+                break;
+            case 'Subaru':
+                $models = array('Impreza', 'Brz');
                 $model = $models[rand(0, count($models) -1)];
                 break;
         }

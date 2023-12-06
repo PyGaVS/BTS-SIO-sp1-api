@@ -14,4 +14,8 @@ class CarModel extends Model
     {
         return $this->belongsTo(Car::class);
     }
+
+    public function booking(): BelongsTo {
+        return $this->belongsTo(Booking::class);
+    }
 }

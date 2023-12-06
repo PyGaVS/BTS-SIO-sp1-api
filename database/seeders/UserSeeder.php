@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
     {
         $password = Hash::make('12345678');
         $userTypes = [
-            1 => 'agent',
+            1 => 'customer',
             2 => 'driver'
         ];
 
@@ -46,22 +46,9 @@ class UserSeeder extends Seeder
                     'agency_id' => rand(1, 3)
                 ]);
 
-            /*
-            $agent->UserType()->create([
-                'label' => 'agent',
-                'user_id' => $agent['id'],
-            ]);
-            */
         }
 
         //DRIVERS
-        /*
-        foreach(range(1, 15) as $i){
-            $driver = User::factory()
-                ->create(['user_type_id' => 2]);
-
-        }
-        */
         User::factory()->count(15)
             ->create([
                 'user_type_id' => 2

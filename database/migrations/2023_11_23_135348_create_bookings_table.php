@@ -18,6 +18,8 @@ return new class extends Migration
             $table->dateTime('beginDate');
             $table->dateTime('endDate');
             $table->integer('nbPassenger');
+            $table->foreignId('startAgency')->nullable()->constrained('agencies');
+            $table->foreignId('endAgency')->nullable()->constrained('agencies');
             $table->timestamps();
         });
     }
