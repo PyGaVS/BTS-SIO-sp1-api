@@ -12,6 +12,17 @@ class Booking extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'number',
+        'status',
+        'beginDate',
+        'endDate',
+        'nbPassengers',
+        'car_model_id',
+        'car_id',
+        'customer_id',
+
+    ];
     protected $hidden = [
         'created_at',
         'updated_at'
@@ -25,12 +36,12 @@ class Booking extends Model
         return $this->hasOne(Journey::class);
     }
 
-    public function model(): HasOne {
-        return $this->hasOne(Model::class);
+    public function carModel(): BelongsTo {
+        return $this->belongsTo(CarModel::class);
     }
 
-    public function car(): HasOne {
-        return $this->hasOne(Car::class);
+    public function car(): BelongsTo {
+        return $this->belongsTo(Car::class);
     }
 
     public function customer(): HasOne {

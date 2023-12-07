@@ -18,7 +18,7 @@ class BookingFactory extends Factory
      */
     public function definition(): array
     {
-        $status = ['en cours', 'à venir'];
+        $status = ['en cours', 'à venir', 'terminée'];
         $beginDate = fake()->dateTimeInInterval('-1 year', '+2 year');
         $endDate = fake()->dateTimeInInterval($beginDate, '+7 days');
         $customers = User::where('user_type_id', '=', 1)->get();
@@ -27,7 +27,7 @@ class BookingFactory extends Factory
         $car = $cars->find($car_id);
         return [
             'number' => fake()->randomNumber(7),
-            'status' => $status[rand(0, 1)],
+            'status' => $status[rand(0, 2)],
             'beginDate' => $beginDate,
             'endDate' => $endDate,
             'nbPassenger' => rand(0, 4),
