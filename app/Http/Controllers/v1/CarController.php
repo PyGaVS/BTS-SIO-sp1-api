@@ -1,19 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1;
 
-use App\Http\Requests\StoreCarModelRequest;
-use App\Http\Requests\UpdateCarModelRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCarRequest;
+use App\Http\Requests\UpdateCarRequest;
+use App\Models\Car;
 use App\Models\CarModel;
 
-class CarModelController extends Controller
+class CarController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $cars = Car::all();
+        foreach($cars as $car) {
+            $car['model'] = CarModel::find($car->id);
+        }
+
+        return response()->json($cars);
     }
 
     /**
@@ -27,7 +34,7 @@ class CarModelController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCarModelRequest $request)
+    public function store(StoreCarRequest $request)
     {
         //
     }
@@ -35,7 +42,7 @@ class CarModelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CarModel $carModel)
+    public function show(Car $car)
     {
         //
     }
@@ -43,7 +50,7 @@ class CarModelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CarModel $carModel)
+    public function edit(Car $car)
     {
         //
     }
@@ -51,7 +58,7 @@ class CarModelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCarModelRequest $request, CarModel $carModel)
+    public function update(UpdateCarRequest $request, Car $car)
     {
         //
     }
@@ -59,7 +66,7 @@ class CarModelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CarModel $carModel)
+    public function destroy(Car $car)
     {
         //
     }

@@ -27,6 +27,8 @@ Route::prefix('v1')->group(function () {
         Route::resource('driver', v1\DriverController::class);
         Route::resource('customer', v1\CustomerController::class);
         Route::resource('booking', v1\BookingController::class);
+        Route::resource('car', v1\CarController::class);
+        Route::resource('model', v1\CarModelController::class);
     });
 
 
