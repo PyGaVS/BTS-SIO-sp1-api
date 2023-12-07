@@ -10,6 +10,10 @@ class BookingUser extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'booking_id'
+    ];
     protected $hidden = [
         'created_at',
         'updated_at'

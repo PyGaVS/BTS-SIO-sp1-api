@@ -38,7 +38,6 @@ class CarFactory extends Factory
             'Opérationnelle',
             'Nettoyage',
             'Controle technique',
-            'Autre exemple'
         );
         return $status[rand(0, count($status) -1)];
     }

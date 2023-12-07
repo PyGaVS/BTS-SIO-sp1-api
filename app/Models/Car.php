@@ -12,6 +12,9 @@ class Car extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'status'
+    ];
     public function reports(): BelongsTo
     {
         return $this->belongsTo(Report::class);

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBookingRequest;
 use App\Http\Requests\UpdateBookingRequest;
 use App\Models\Booking;
+use App\Models\BookingUser;
 use App\Models\Car;
 use App\Models\CarModel;
 use App\Models\User;
@@ -60,21 +61,34 @@ class BookingController extends Controller
         $request['status'] = 'à venir';
         $request['number'] = fake()->randomNumber(7);
         */
-        $request['car_id'] = Car::where('car_model_id', '=', $request['model_id'])
+        $drivers = explode(';', $request['drivers']);
+        $car = Car::where('car_model_id', '=', $request['car_model_id'])
             ->where('status', '=', 'Opérationnelle')->first(); //PEUT ÊTRE NULL
+
+        if(!$car){
+            return response()->json(['error' => 'no valid car available']);
+        }
         $booking = Booking::create([
             'number' => fake()->randomNumber(7),
             'status' => 'à venir',
-            'car_id' => $request['car_id'],
+            'nbPassenger' => $request['nbPassenger'],
+            'car_id' => $car->id,
             'beginDate' => $request['beginDate'],
             'endDate' => $request['endDate'],
-            'nbPassenger' => $request['nbPassenger'],
             'startAgency' => $request['startAgency'],
             'endAgency' => $request['endAgency'],
             'car_model_id' => $request['car_model_id'],
-            'customer_id' => Auth::user()->id
-
+            'customer' => Auth::user()->id
         ]);
+
+        foreach($drivers as $driver){
+            BookingUser::create([
+                'user_id' => $driver,
+                'booking_id' => $booking->id
+            ]);
+        }
+
+        $car->update(['status' => 'A préparer']);
 
         return response()->json($booking);
     }

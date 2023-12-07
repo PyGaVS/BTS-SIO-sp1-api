@@ -17,10 +17,12 @@ class Booking extends Model
         'status',
         'beginDate',
         'endDate',
-        'nbPassengers',
+        'startAgency',
+        'endAgency',
+        'nbPassenger',
         'car_model_id',
         'car_id',
-        'customer_id',
+        'customer',
 
     ];
     protected $hidden = [
