@@ -87,17 +87,15 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        $booking = Booking::with('bookingUser')->find($booking->id);
-        $drivers = [];
-        foreach($booking['bookingUser'] as $bookingUser){
-            $drivers[] = User::find($bookingUser['user_id']);
+        $user_id = Auth::user()->id;
+        $booking= DB::select("call ps_customer_bookings_show($user_id, $booking->id);");
+        if($booking) {
+            Car::find($booking[0]->car_id);
+            CarModel::find($booking[0]->car_model_id);
+            return response()->json($booking);
+        } else {
+            return response()->json(["error" => "no booking"]);
         }
-        Car::find($booking->car);
-        CarModel::find($booking->carModel);
-        //$booking['customer'] = User::find($booking->customer);
-        $booking['drivers'] = $drivers;
-
-        return response()->json($booking);
     }
 
     /**
