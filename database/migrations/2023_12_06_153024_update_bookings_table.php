@@ -23,7 +23,7 @@ return new class extends Migration
             LEFT JOIN booking_users ON bookings.id = booking_users.booking_id
             LEFT JOIN users ON users.id = booking_users.user_id
             WHERE bookings.customer = user_id
-            GROUP BY bookings.id, bookings.number;
+            GROUP BY bookings.id, bookings.number, bookings.status, bookings.beginDate, bookings.endDate, bookings.nbPassenger, bookings.startAgency, bookings.endAgency, bookings.car_id, bookings.car_model_id, bookings.customer, bookings.created_at, bookings.updated_at;
         END
         ";
         $psCustomerBookingsShow = "
@@ -36,7 +36,7 @@ return new class extends Migration
             LEFT JOIN booking_users ON bookings.id = booking_users.booking_id
             LEFT JOIN users ON users.id = booking_users.user_id
             WHERE bookings.customer = user_id AND bookings.id = id
-            GROUP BY bookings.id, bookings.number;
+            GROUP BY bookings.id, bookings.number, bookings.status, bookings.beginDate, bookings.endDate, bookings.nbPassenger, bookings.startAgency, bookings.endAgency, bookings.car_id, bookings.car_model_id, bookings.customer, bookings.created_at, bookings.updated_at;
         END
         ";
 
