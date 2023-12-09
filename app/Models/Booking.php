@@ -46,7 +46,7 @@ class Booking extends Model
         return $this->belongsTo(Car::class);
     }
 
-    public function customer(): HasOne {
-        return $this->hasOne(User::class);
+    public function customer(): BelongsTo {
+        return $this->belongsTo(User::class);
     }
 }

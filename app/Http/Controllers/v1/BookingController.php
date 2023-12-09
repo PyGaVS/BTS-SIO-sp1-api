@@ -11,6 +11,7 @@ use App\Models\Car;
 use App\Models\CarModel;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -19,20 +20,8 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::with('bookingUser')->get();
-        //dd($bookings[0]['bookingUser']);
-        foreach($bookings as $booking){
-            $drivers = [];
-            foreach($booking['bookingUser'] as $bookingUser){
-                $drivers[] = User::find($bookingUser['user_id']);
-            }
-            Car::find($booking->car);
-            CarModel::find($booking->carModel);
-            //$booking['customer'] = User::find($booking->customer);
-            $booking['drivers'] = $drivers;
-
-        }
-
+        $user_id = Auth::user()->id;
+        $bookings= DB::select("call ps_customer_bookings($user_id);");
         return response()->json($bookings);
     }
 

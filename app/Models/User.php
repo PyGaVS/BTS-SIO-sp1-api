@@ -59,7 +59,7 @@ class User extends Authenticatable
         return $this->hasMany(BookingUser::class);
     }
 
-    public function booking(): BelongsTo {
-        return $this->belongsTo(Booking::class);
+    public function bookings(): HasMany {
+        return $this->hasMany(Booking::class);
     }
 }
