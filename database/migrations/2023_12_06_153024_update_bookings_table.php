@@ -24,7 +24,7 @@ BEGIN
     LEFT JOIN users ON users.id = booking_users.user_id
     WHERE bookings.customer = user_id
     GROUP BY bookings.id;
-END;
+END
 ";
 
         Schema::table('bookings', function (Blueprint $table) {
