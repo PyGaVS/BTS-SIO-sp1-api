@@ -90,8 +90,8 @@ class BookingController extends Controller
         $user_id = Auth::user()->id;
         $booking= DB::select("call ps_customer_bookings_show($user_id, $booking->id);");
         if($booking) {
-            Car::find($booking[0]->car_id);
-            CarModel::find($booking[0]->car_model_id);
+            $booking[0]->car = Car::find($booking[0]->car_id);
+            $booking[0]->car_model = CarModel::find($booking[0]->car_model_id);
             return response()->json($booking);
         } else {
             return response()->json(["error" => "no booking"]);
@@ -119,6 +119,15 @@ class BookingController extends Controller
      */
     public function destroy(Booking $booking)
     {
-        //
+        $user_id = Auth::user()->id;
+        $booking = Booking::find($booking->id);
+        if($booking->customer == $user_id) {
+            $booking_users = BookingUser::where('booking_id', '=', $booking->id);
+            $booking_users->delete();
+            $booking->delete();
+            return response()->json($booking);
+        } else {
+            return response()->json(["error" => "no booking"]);
+        }
     }
 }
