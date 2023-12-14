@@ -17,7 +17,7 @@ class CarController extends Controller
     {
         $cars = Car::all();
         foreach($cars as $car) {
-            $car['model'] = CarModel::find($car->id);
+            $car['model'] = CarModel::find($car->car_model_id);
         }
 
         return response()->json($cars);
