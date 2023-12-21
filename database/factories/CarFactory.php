@@ -48,7 +48,8 @@ class CarFactory extends Factory
             'status' => $this->statusPicker(),
             'isClean' => rand(0, 1),
             'mileage' => rand(0, 500000),
-            'car_model_id' => rand(1, 25)
+            'car_model_id' => rand(1, 31)
         ];
+
     }
 }

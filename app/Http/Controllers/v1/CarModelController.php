@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCarModelRequest;
 use App\Http\Requests\UpdateCarModelRequest;
 use App\Models\CarModel;
+use Illuminate\Support\Facades\DB;
 
 class CarModelController extends Controller
 {
@@ -15,6 +16,7 @@ class CarModelController extends Controller
     public function index()
     {
         return response()->json(CarModel::all());
+        //return response()->json(DB::table('car_models')->distinct()->get());
     }
 
     /**

@@ -118,11 +118,14 @@ class CarModelFactory extends Factory
 
     public function definition(): array
     {
+        return [];
+        /*
         $car = $this->carPicker();
         return [
             'name' => $car[1],
             'brand' => $car[0],
             'capacity' => $car[2]
         ];
+        */
     }
 }
