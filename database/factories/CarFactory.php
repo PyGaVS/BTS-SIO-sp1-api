@@ -36,6 +36,7 @@ class CarFactory extends Factory
         $status = array(
             'Réparation',
             'Opérationnelle',
+            'Opérationnelle',
             'Nettoyage',
             'Controle technique',
         );

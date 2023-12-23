@@ -67,7 +67,7 @@ class BookingController extends Controller
             'startAgency' => $request['startAgency'],
             'endAgency' => $request['endAgency'],
             'car_model_id' => $request['car_model_id'],
-            'customer' => Auth::user()->id
+            'customer' => $request['user_id']
         ]);
 
         foreach($drivers as $driver){
