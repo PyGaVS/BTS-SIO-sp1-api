@@ -119,6 +119,7 @@ class CarModelSeeder extends Seeder
                             'capacity' => $nbPlaces,
                         ]);
                     }
+                    break;
                 case 'Ferrari':
                     $models = array('F40','LaFerrari','488 Italia');
                     foreach($models as $model) {
