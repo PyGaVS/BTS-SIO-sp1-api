@@ -55,7 +55,7 @@ class BookingController extends Controller
             ->where('status', '=', 'Opérationnelle')->first(); //PEUT ÊTRE NULL
 
         if(!$car){
-            return response()->json(['error' => 'no valid car available']);
+            return response()->json(['error' => 'no valid car available'], 200);
         }
         $booking = Booking::create([
             'number' => fake()->randomNumber(7),
@@ -79,7 +79,7 @@ class BookingController extends Controller
 
         $car->update(['status' => 'A préparer']);
 
-        return response()->json($booking);
+        return response()->json($booking, 201);
     }
 
     /**
