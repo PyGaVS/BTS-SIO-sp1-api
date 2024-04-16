@@ -21,7 +21,7 @@ class BaseController extends Controller
 
             'success' => [
                 'token' => $result['token'],
-                'message' => $message,
+//                'message' => $message,
             ],
 
         ];
@@ -38,21 +38,21 @@ class BaseController extends Controller
 
         $response = [
 
-            'success' => false,
+            //'success' => false,
 
             'message' => $error,
 
         ];
 
 
-        if(!empty($errorMessages)){
+//        if(!empty($errorMessages)){
+//
+//            $response['data'] = $errorMessages;
+//
+//        }
 
-            $response['data'] = $errorMessages;
 
-        }
-
-
-        return response()->json($response, $code);
+        return response()->json($response);
 
     }
 
